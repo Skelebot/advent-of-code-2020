@@ -25,7 +25,9 @@ fn is_valid_pt1(passport: &str) -> bool {
 fn is_valid_pt2(passport: &str) -> bool {
     // byr, iyr, eyr, hgt, hcl, ecl, pid, cid
     let mut valid: u8 = 0;
-    let entries = passport.split(|c: char| c.is_whitespace() || c == '\n').filter(|s| s.trim() != "");
+    let entries = passport
+        .split(|c: char| c.is_whitespace() || c == '\n')
+        .filter(|s| s.trim() != "");
     for entry in entries {
         match &entry[0..3] {
             "byr" => match entry[4..].parse() {
@@ -129,7 +131,6 @@ fn test_valid() {
     }
 }
 
-/*
 #[test]
 fn test_invalid() {
     let input = "
@@ -152,4 +153,3 @@ fn test_invalid() {
         assert!(!is_valid_pt2(pass))
     }
 }
-*/
