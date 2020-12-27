@@ -30,7 +30,9 @@ fn count_answered_every<T: Deref<Target = str> + std::fmt::Debug>(groups: &[T]) 
                     break;
                 }
             }
-            if every { count += 1 }
+            if every {
+                count += 1
+            }
         }
         sum += count
     }
@@ -65,21 +67,21 @@ fn test_count_answered_any() {
 #[test]
 fn test_count_answered_every() {
     let input = "
-abc
+        abc
 
-a
-b
-c
+        a
+        b
+        c
 
-ab
-ac
+        ab
+        ac
 
-a
-a
-a
-a
+        a
+        a
+        a
+        a
 
-b
+        b
     ";
 
     let groups: Vec<&str> = input.split("\n\n").map(|g| g.trim()).collect();
